@@ -509,3 +509,97 @@
 
   .order-form, .summary { padding: 20px; }
 }
+/* =====================================================
+   PAGE DEVIS
+   ===================================================== */
+.quote-page {
+  display: grid;
+  grid-template-columns: 1.5fr .75fr;
+  grid-template-areas: "form how";
+  gap: 36px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+.quote-page > .quote { grid-area: form; margin-top: 0; }
+.quote-page > .quote-done { grid-area: form; grid-column: 1 / -1; max-width: 640px; margin: 10px auto 0; width: 100%; }
+.quote-page > .how { grid-area: how; }
+.quote[hidden], .how[hidden] { display: none; }
+
+.quote--page { padding: 32px; }
+.block-title--spaced { margin-top: 30px; margin-bottom: 18px; }
+.quote--page .block-title:first-child { margin-bottom: 18px; }
+
+.field__error--group { display: block; margin: -8px 0 14px; }
+.field__hint { font-size: .75rem; color: var(--taupe); opacity: .75; }
+
+/* Champ date : icône claire sur fond sombre */
+.date { color-scheme: dark; }
+
+/* ---------- Options de personnalisation (cases en pastilles) ---------- */
+.options { border: 0; margin: 4px 0 20px; padding: 0; min-width: 0; }
+.options legend { font-size: .82rem; font-weight: 500; color: var(--taupe); letter-spacing: .03em; margin-bottom: 12px; }
+.options__list { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.check-chip { position: relative; cursor: pointer; }
+.check-chip input {
+  position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer;
+}
+.check-chip span {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--noir);
+  color: var(--beige);
+  font-size: .85rem; font-weight: 500;
+  transition: background .25s, border-color .25s, color .25s;
+}
+.check-chip:hover span { border-color: var(--taupe); }
+.check-chip input:checked + span {
+  background: var(--grad-btn); color: var(--noir);
+  border-color: transparent; font-weight: 600;
+}
+.check-chip input:focus-visible + span { outline: 2px solid var(--taupe); outline-offset: 2px; }
+
+.order-form__note--center { text-align: center; margin-top: 14px; }
+
+/* ---------- Colonne « Comment ça se passe » ---------- */
+.how {
+  position: sticky; top: 104px;
+  padding: 28px;
+  border-radius: var(--radius);
+  background: var(--charbon);
+  border: 1px solid var(--line);
+}
+.how .block-title { margin-bottom: 20px; }
+.how__steps { list-style: none; display: flex; flex-direction: column; gap: 22px; }
+.how__steps li { display: flex; gap: 16px; align-items: flex-start; }
+.how__num {
+  flex: none; width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--grad-btn); color: var(--noir);
+  font-weight: 700; font-size: .85rem;
+}
+.how__steps strong { display: block; color: var(--ivoire); font-weight: 600; font-size: .95rem; margin-bottom: 2px; }
+.how__steps p { font-size: .85rem; opacity: .7; line-height: 1.5; }
+.how__contact {
+  margin-top: 28px; padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.how__contact p { font-size: .85rem; opacity: .75; margin-bottom: 12px; }
+
+/* ---------- Confirmation : récapitulatif ---------- */
+.specs--center { text-align: left; margin: 22px 0 18px; }
+.quote-done__actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+/* ---------- Responsive devis ---------- */
+@media (max-width: 900px) {
+  .quote-page { grid-template-columns: 1fr; grid-template-areas: "form" "how"; gap: 24px; margin-bottom: 56px; }
+  .how { position: static; }
+}
+@media (max-width: 480px) {
+  .quote--page { padding: 20px; }
+  .how { padding: 22px; }
+  .quote-done__actions .btn { width: 100%; }
+}
