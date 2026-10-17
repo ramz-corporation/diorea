@@ -108,15 +108,39 @@ const COMMANDES_DEMO = [
   { ref: 'CMD-1001', client: 'Daouda P.',   jours: 150, lignes: [{ id: 5, qte: 2 }],                    statut: 'livree',      paiement: 'paye' }
 ];
 
+/* ---------- Statuts modifiés par l'admin (démo, stockés dans le navigateur) ---------- */
+const CLE_CMD = 'diorea_admin_commandes_v1';
+const PAIEMENTS = { a_payer: 'À payer', paye: 'Payé' };
+
+function lireModifsCmd() {
+  try { return JSON.parse(localStorage.getItem(CLE_CMD)) || {}; } catch { return {}; }
+}
+
+function sauverModifCmd(ref, champs) {
+  const tout = lireModifsCmd();
+  tout[ref] = { ...(tout[ref] || {}), ...champs };
+  try { localStorage.setItem(CLE_CMD, JSON.stringify(tout)); return true; } catch { return false; }
+}
+
+function fmtDate(d) {
+  return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
 function commandesCalculees() {
   const produits = chargerProduits();
+  const modifs = lireModifsCmd();
+
   return COMMANDES_DEMO.map(c => {
     const lignes = c.lignes.map(l => {
       const p = produits.find(x => x.id === l.id);
       return { ...l, nom: p ? p.nom : 'Produit supprimé', pu: (p && p.mode === 'direct' && p.prix) ? p.prix : 0 };
     });
+    const m = modifs[c.ref] || {};
     return {
-      ...c, lignes,
+      ...c,
+      lignes,
+      statut: STATUTS_CMD[m.statut] ? m.statut : c.statut,
+      paiement: PAIEMENTS[m.paiement] ? m.paiement : c.paiement,
       total: lignes.reduce((s, l) => s + l.pu * l.qte, 0),
       date: new Date(Date.now() - c.jours * 86400000)
     };

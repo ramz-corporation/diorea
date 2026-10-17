@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Commandes — Administration DIOREA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body data-page="commandes">
+
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="admin__main">
+    <header class="topbar" id="topbar" data-title="Commandes"></header>
+
+    <main class="content">
+      <p class="demo-note" id="demoNote"></p>
+
+      <div class="chips" id="onglets" role="group" aria-label="Filtrer par statut"></div>
+
+      <div class="list-tools">
+        <div class="field grow" style="margin:0">
+          <input type="search" id="q" placeholder="Rechercher par référence ou client…" aria-label="Rechercher une commande" autocomplete="off">
+        </div>
+        <select id="fPaiement" class="input" aria-label="Filtrer par paiement" style="width:auto">
+          <option value="all">Tous les paiements</option>
+          <option value="paye">Payées</option>
+          <option value="a_payer">À payer</option>
+        </select>
+        <span class="list-count" id="count" aria-live="polite"></span>
+      </div>
+
+      <section class="card" style="padding:8px 8px 4px">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Référence</th><th>Client</th><th>Date</th><th>Articles</th>
+                <th class="num">Total</th><th>Paiement</th><th>Statut</th><th class="num">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+        <div class="empty" id="empty" hidden>
+          <p class="empty__title">Aucune commande</p>
+          <p>Aucune commande ne correspond à votre recherche.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="dialog dialog--wide" id="detail" aria-label="Détail de la commande"></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/commandes.js"></script>
+</body>
+</html>
