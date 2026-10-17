@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demande de devis — DIOREA GROUP</title>
+  <meta name="description" content="Décrivez votre projet et recevez une proposition adaptée de DIOREA GROUP.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- ============ EN-TÊTE ============ -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" aria-label="DIOREA GROUP, accueil">
+        <span class="logo__name">DIOREA</span>
+        <span class="logo__sub">GROUP</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <a href="index.html" class="nav__link">Accueil</a>
+        <a href="catalogue.html" class="nav__link">Catalogue</a>
+        <a href="impression.html" class="nav__link">Impression</a>
+        <a href="personnalisation.html" class="nav__link">Personnalisation</a>
+        <a href="accessoires.html" class="nav__link">Accessoires</a>
+        <a href="branding.html" class="nav__link">Branding</a>
+      </nav>
+
+      <div class="header__actions">
+        <a href="panier.html" class="icon-btn cart-btn" aria-label="Panier">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count" id="cartCount" hidden>0</span>
+        </a>
+        <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="page-intro">
+      <p class="eyebrow">DEMANDE DE DEVIS</p>
+      <h1 class="page-intro__title">Décrivez votre projet, <em>nous le façonnons.</em></h1>
+      <p class="page-intro__lead">Plus votre description est précise, plus notre proposition sera adaptée à votre besoin.</p>
+    </section>
+
+    <section class="quote-page" id="quoteRoot">
+
+      <!-- ============ FORMULAIRE ============ -->
+      <div class="quote quote--page" id="quoteBox">
+        <form id="quoteForm" novalidate>
+
+          <h2 class="block-title">Vos coordonnées</h2>
+
+          <div class="field">
+            <label for="dNom">Nom ou entreprise <span class="req">*</span></label>
+            <input type="text" id="dNom" autocomplete="name" required>
+            <span class="field__error" id="errNom"></span>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="dTel">Téléphone</label>
+              <input type="tel" id="dTel" autocomplete="tel" inputmode="tel">
+            </div>
+            <div class="field">
+              <label for="dMail">E-mail</label>
+              <input type="email" id="dMail" autocomplete="email">
+            </div>
+          </div>
+          <span class="field__error field__error--group" id="errContact"></span>
+
+          <h2 class="block-title block-title--spaced">Votre projet</h2>
+
+          <div class="field">
+            <label for="dProduit">Produit ou service concerné <span class="req">*</span></label>
+            <select id="dProduit" class="select select--full" required></select>
+            <span class="field__error" id="errProduit"></span>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="dQte">Quantité souhaitée <span class="req">*</span></label>
+              <input type="number" id="dQte" min="1" inputmode="numeric" required>
+              <span class="field__error" id="errQte"></span>
+            </div>
+            <div class="field">
+              <label for="dDim">Dimensions ou format</label>
+              <input type="text" id="dDim" placeholder="Ex : 10 × 15 cm">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="dDesc">Description du besoin <span class="req">*</span></label>
+            <textarea id="dDesc" rows="5" placeholder="Parlez-nous de votre projet : usage, style, couleurs, contraintes…" required></textarea>
+            <span class="field__error" id="errDesc"></span>
+          </div>
+
+          <fieldset class="options">
+            <legend>Options de personnalisation</legend>
+            <div class="options__list" id="dOptions">
+              <label class="check-chip"><input type="checkbox" value="Texte ou nom"><span>Texte ou nom</span></label>
+              <label class="check-chip"><input type="checkbox" value="Logo"><span>Logo</span></label>
+              <label class="check-chip"><input type="checkbox" value="Couleurs précises"><span>Couleurs précises</span></label>
+              <label class="check-chip"><input type="checkbox" value="Format sur mesure"><span>Format sur mesure</span></label>
+              <label class="check-chip"><input type="checkbox" value="Emballage ou packaging"><span>Emballage ou packaging</span></label>
+              <label class="check-chip"><input type="checkbox" value="Création graphique"><span>Création graphique</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="dBudget">Budget indicatif (facultatif)</label>
+              <input type="text" id="dBudget" placeholder="Ex : 100 000 FCFA">
+            </div>
+            <div class="field">
+              <label for="dDate">Date souhaitée (facultatif)</label>
+              <input type="date" id="dDate" class="date">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="dFile">Fichier de référence (facultatif)</label>
+            <input type="file" id="dFile" class="file" accept="image/*,.pdf">
+            <span class="field__hint">Image ou PDF, 5 Mo maximum.</span>
+            <span class="field__error" id="errFile"></span>
+          </div>
+
+          <button type="submit" class="btn btn--gradient btn--block">Envoyer ma demande</button>
+          <p class="order-form__note order-form__note--center">Envoi simulé (maquette) : aucune donnée n'est transmise pour le moment.</p>
+        </form>
+      </div>
+
+      <!-- ============ CONFIRMATION ============ -->
+      <div class="quote-done" id="quoteDone" hidden>
+        <span class="quote-done__icon">
+          <svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+        </span>
+        <h2 class="block-title">Demande envoyée</h2>
+        <p>Merci <strong id="doneNom"></strong>. Votre demande a bien été enregistrée dans cette maquette.</p>
+
+        <dl class="specs specs--center" id="doneRecap"></dl>
+
+        <p class="quote-done__note" id="doneRef"></p>
+        <div class="quote-done__actions">
+          <a href="catalogue.html" class="btn btn--ghost">Retour au catalogue</a>
+          <button type="button" class="btn btn--ghost" id="newQuote">Nouvelle demande</button>
+        </div>
+      </div>
+
+      <!-- ============ COLONNE D'EXPLICATION ============ -->
+      <aside class="how" id="howBox" aria-label="Comment ça se passe">
+        <h2 class="block-title">Comment ça se passe</h2>
+        <ol class="how__steps">
+          <li>
+            <span class="how__num">1</span>
+            <div><strong>Vous décrivez</strong><p>Votre besoin, vos envies, vos références.</p></div>
+          </li>
+          <li>
+            <span class="how__num">2</span>
+            <div><strong>Nous étudions</strong><p>Nous analysons votre demande avec attention.</p></div>
+          </li>
+          <li>
+            <span class="how__num">3</span>
+            <div><strong>Vous recevez une proposition</strong><p>Adaptée à votre projet, sans engagement.</p></div>
+          </li>
+        </ol>
+        <div class="how__contact">
+          <p>Une question avant d'écrire ?</p>
+          <!-- Remplace le lien par ton vrai numéro : https://wa.me/221XXXXXXXXX -->
+          <a href="#" class="btn btn--ghost btn--sm">Discuter sur WhatsApp</a>
+        </div>
+      </aside>
+
+    </section>
+  </main>
+
+  <!-- ============ PIED DE PAGE ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="logo">
+          <span class="logo__name">DIOREA</span>
+          <span class="logo__sub">GROUP</span>
+        </a>
+        <p>Impression, personnalisation et créations sur mesure.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Catégories">
+        <h3>Catégories</h3>
+        <a href="impression.html">Impression</a>
+        <a href="personnalisation.html">Personnalisation</a>
+        <a href="accessoires.html">Accessoires</a>
+        <a href="branding.html">Branding &amp; événementiel</a>
+      </nav>
+
+      <div class="footer__col">
+        <h3>Contact</h3>
+        <a href="devis.html">Demander un devis</a>
+        <a href="#">Instagram</a>
+        <a href="#">WhatsApp</a>
+      </div>
+
+      <div class="footer__col">
+        <h3>Informations</h3>
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+        <a href="#">Conditions générales</a>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> DIOREA GROUP. Tous droits réservés.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/panier.js"></script>
+  <script src="js/devis.js"></script>
+</body>
+</html>
