@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produit — DIOREA GROUP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- ============ EN-TÊTE ============ -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" aria-label="DIOREA GROUP, accueil">
+        <span class="logo__name">DIOREA</span>
+        <span class="logo__sub">GROUP</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <a href="index.html" class="nav__link">Accueil</a>
+        <a href="catalogue.html" class="nav__link is-active">Catalogue</a>
+        <a href="impression.html" class="nav__link">Impression</a>
+        <a href="personnalisation.html" class="nav__link">Personnalisation</a>
+        <a href="accessoires.html" class="nav__link">Accessoires</a>
+        <a href="branding.html" class="nav__link">Branding</a>
+      </nav>
+
+      <div class="header__actions">
+        <a href="panier.html" class="icon-btn cart-btn" aria-label="Panier">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count" id="cartCount" hidden>0</span>
+        </a>
+        <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- La fiche est générée par js/produit.js -->
+    <div id="productRoot"></div>
+  </main>
+
+  <!-- ============ PIED DE PAGE ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="logo">
+          <span class="logo__name">DIOREA</span>
+          <span class="logo__sub">GROUP</span>
+        </a>
+        <p>Impression, personnalisation et créations sur mesure.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Catégories">
+        <h3>Catégories</h3>
+        <a href="impression.html">Impression</a>
+        <a href="personnalisation.html">Personnalisation</a>
+        <a href="accessoires.html">Accessoires</a>
+        <a href="branding.html">Branding &amp; événementiel</a>
+      </nav>
+
+      <div class="footer__col">
+        <h3>Contact</h3>
+        <a href="devis.html">Demander un devis</a>
+        <a href="#">Instagram</a>
+        <a href="#">WhatsApp</a>
+      </div>
+
+      <div class="footer__col">
+        <h3>Informations</h3>
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+        <a href="#">Conditions générales</a>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> DIOREA GROUP. Tous droits réservés.</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/panier.js"></script>
+  <script src="js/produit.js"></script>
+</body>
+</html>
