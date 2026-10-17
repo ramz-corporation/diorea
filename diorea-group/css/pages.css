@@ -603,3 +603,106 @@
   .how { padding: 22px; }
   .quote-done__actions .btn { width: 100%; }
 }
+/* =====================================================
+   PAGES DE CATÉGORIES
+   ===================================================== */
+.cat-hero {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 56px;
+  align-items: center;
+  padding: 56px 0 56px;
+}
+.cat-hero .page-intro__title { margin-bottom: 20px; }
+.cat-hero__lead { max-width: 520px; opacity: .8; margin-bottom: 32px; }
+
+/* Visuel en arche, comme le portrait de l'accueil */
+.cat-hero__visual {
+  position: relative;
+  width: 100%; max-width: 360px;
+  margin-left: auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px 26px 26px;
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 60% 25%, var(--marron) 0%, var(--espresso) 45%, var(--charbon) 100%);
+  border: 1px solid var(--line);
+  box-shadow: 0 0 90px rgba(104, 72, 58, .25);
+  color: var(--beige);
+}
+.cat-hero__icon svg { width: 72px; height: 72px; stroke-width: 1; opacity: .85; }
+.cat-hero__num {
+  position: absolute; bottom: 26px; left: 0; right: 0;
+  text-align: center;
+  font-family: var(--font-titre); font-style: italic;
+  font-size: 1.1rem; letter-spacing: .2em;
+  color: var(--taupe);
+}
+
+/* ---------- Titres de section ---------- */
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 26px; }
+.section-head__title {
+  font-family: var(--font-titre); font-weight: 400;
+  font-size: clamp(1.5rem, 2.8vw, 2rem); color: var(--ivoire);
+  margin-bottom: 26px;
+}
+.section-head .section-head__title { margin-bottom: 0; }
+.section-head__link { font-size: .88rem; color: var(--taupe); transition: color .25s; }
+.section-head__link:hover { color: var(--ivoire); }
+
+/* ---------- Prestations ---------- */
+.cat-offers { margin-bottom: 64px; }
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+.offer-item {
+  padding: 24px;
+  border-radius: 18px;
+  background: var(--charbon);
+  border: 1px solid var(--line);
+  transition: border-color .3s, transform .3s;
+}
+.offer-item:hover { border-color: rgba(181, 164, 147, .4); transform: translateY(-3px); }
+.offer-item h3 { font-family: var(--font-titre); font-weight: 400; font-size: 1.15rem; color: var(--ivoire); margin-bottom: 8px; }
+.offer-item p { font-size: .87rem; opacity: .7; line-height: 1.5; }
+
+/* ---------- Options (page Personnalisation) ---------- */
+.cat-options { margin-bottom: 64px; }
+.cat-options__list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.cat-options__list li {
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: var(--grad-btn); color: var(--noir);
+  font-size: .88rem; font-weight: 600;
+}
+.cat-options__note { font-size: .82rem; opacity: .6; max-width: 520px; }
+
+/* ---------- Produits ---------- */
+.cat-products { margin-bottom: 40px; scroll-margin-top: 100px; }
+.empty--inline {
+  margin-bottom: 72px;
+  padding: 56px 24px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+}
+
+/* ---------- Autres catégories ---------- */
+.cat-switch {
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px;
+  margin-bottom: 56px; padding: 28px 0;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.cat-switch p { font-size: .82rem; letter-spacing: .2em; text-transform: uppercase; color: var(--taupe); }
+.cat-switch__list { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.cat-switch .chip { display: inline-block; }
+
+/* ---------- Responsive catégories ---------- */
+@media (max-width: 820px) {
+  .cat-hero { grid-template-columns: 1fr; gap: 32px; padding: 32px 0 40px; text-align: center; }
+  .cat-hero__visual { order: -1; max-width: 240px; margin-inline: auto; }
+  .cat-hero__lead { margin-inline: auto; }
+  .cat-hero .hero__cta { justify-content: center; flex-direction: column; align-items: stretch; }
+  .cat-hero__icon svg { width: 56px; height: 56px; }
+  .cat-offers, .cat-options { margin-bottom: 48px; }
+}
