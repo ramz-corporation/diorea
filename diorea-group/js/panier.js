@@ -1,5 +1,7 @@
 /* Panier simple, stocké dans le navigateur (localStorage).
-   Il sera relié à l'API plus tard. */
+   Chaque ligne : { cle, id, quantite, options }
+   Deux produits identiques avec des options différentes
+   (ex : couleur ou texte) forment deux lignes distinctes. */
 
 const CLE_PANIER = 'diorea_panier';
 
@@ -16,13 +18,14 @@ function sauverPanier(panier) {
   majBadgePanier();
 }
 
-function ajouterAuPanier(id, quantite = 1) {
+function ajouterAuPanier(id, quantite = 1, options = {}) {
   const panier = lirePanier();
-  const ligne = panier.find(l => l.id === id);
+  const cle = id + '|' + JSON.stringify(options);
+  const ligne = panier.find(l => l.cle === cle);
   if (ligne) {
     ligne.quantite += quantite;
   } else {
-    panier.push({ id, quantite });
+    panier.push({ cle, id, quantite, options });
   }
   sauverPanier(panier);
 }
