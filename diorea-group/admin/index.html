@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Vue d'ensemble — Administration DIOREA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body data-page="vue">
+
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="admin__main">
+    <header class="topbar" id="topbar" data-title="Vue d'ensemble"></header>
+
+    <main class="content">
+      <p class="demo-note" id="demoNote"></p>
+
+      <section class="kpis" id="kpis" aria-label="Indicateurs clés"></section>
+
+      <div id="alertes"></div>
+
+      <section class="grid-2">
+        <div class="card">
+          <div class="card__head"><h2>Évolution des ventes</h2><span class="muted">6 derniers mois</span></div>
+          <div class="bars" id="chart" role="img" aria-label="Chiffre d'affaires par mois"></div>
+        </div>
+        <div class="card">
+          <div class="card__head"><h2>Produits populaires</h2></div>
+          <ul class="rank" id="populaires"></ul>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card__head">
+          <h2>Commandes récentes</h2>
+          <a href="commandes.html">Tout voir →</a>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Référence</th><th>Client</th><th>Date</th><th class="num">Total</th><th>Statut</th><th>Paiement</th></tr>
+            </thead>
+            <tbody id="recentes"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/vue.js"></script>
+</body>
+</html>

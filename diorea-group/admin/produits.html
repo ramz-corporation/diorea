@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Produits — Administration DIOREA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body data-page="produits">
+
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="admin__main">
+    <header class="topbar" id="topbar" data-title="Produits"></header>
+
+    <main class="content">
+      <div class="list-tools">
+        <div class="field grow" style="margin:0">
+          <input type="search" id="q" placeholder="Rechercher un produit…" aria-label="Rechercher un produit" autocomplete="off">
+        </div>
+        <select id="fCat" class="input" aria-label="Filtrer par catégorie" style="width:auto"></select>
+        <select id="fStatut" class="input" aria-label="Filtrer par statut" style="width:auto">
+          <option value="all">Tous les statuts</option>
+          <option value="publie">Publiés</option>
+          <option value="brouillon">Brouillons</option>
+        </select>
+        <span class="list-count" id="count" aria-live="polite"></span>
+      </div>
+
+      <section class="card" style="padding:8px 8px 4px">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Produit</th><th>Catégorie</th><th>Prix</th><th>Stock</th><th>Statut</th><th class="num">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+        <div class="empty" id="empty" hidden>
+          <p class="empty__title">Aucun produit</p>
+          <p>Aucun produit ne correspond à votre recherche.</p>
+          <a href="produit-form.html" class="btn btn--gradient">Ajouter un produit</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/produits.js"></script>
+</body>
+</html>

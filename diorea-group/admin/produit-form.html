@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Ajouter un produit — Administration DIOREA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body data-page="produit-form">
+
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="admin__main">
+    <header class="topbar" id="topbar" data-title="Ajouter un produit"></header>
+
+    <main class="content">
+      <a class="back" href="produits.html">← Retour aux produits</a>
+
+      <form class="form-layout" id="productForm" novalidate>
+
+        <div class="form-main">
+
+          <!-- INFORMATIONS -->
+          <section class="card">
+            <h2>Informations</h2>
+
+            <div class="field">
+              <label for="nom">Nom du produit <span class="req">*</span></label>
+              <input type="text" id="nom" maxlength="80" placeholder="Ex : Tote bag personnalisé">
+              <span class="field__error" id="errNom"></span>
+            </div>
+
+            <div class="field">
+              <label for="categorie">Catégorie <span class="req">*</span></label>
+              <select id="categorie"></select>
+              <span class="field__error" id="errCategorie"></span>
+            </div>
+
+            <div class="field">
+              <label for="description">Description courte <span class="req">*</span></label>
+              <textarea id="description" rows="2" maxlength="160" placeholder="Une phrase, affichée sur les cartes du catalogue"></textarea>
+              <span class="field__error" id="errDescription"></span>
+            </div>
+
+            <div class="field">
+              <label for="details">Description détaillée (facultatif)</label>
+              <textarea id="details" rows="4" placeholder="Matière, usage, conseils… affichée sur la fiche produit"></textarea>
+            </div>
+          </section>
+
+          <!-- MODE DE VENTE -->
+          <section class="card">
+            <h2>Mode de vente <span class="req">*</span></h2>
+
+            <div class="choices" role="radiogroup" aria-label="Mode de vente">
+              <label class="choice">
+                <input type="radio" name="mode" value="direct" checked>
+                <span class="choice__body"><strong>Achat direct</strong><small>Prix fixe et bouton « Ajouter au panier ».</small></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="mode" value="devis">
+                <span class="choice__body"><strong>Sur devis</strong><small>Pas de prix affiché, le client demande un devis.</small></span>
+              </label>
+            </div>
+
+            <div id="directFields">
+              <div class="field-row">
+                <div class="field">
+                  <label for="prix">Prix <span class="req">*</span></label>
+                  <div class="input-suffix">
+                    <input type="number" id="prix" min="1" step="1" inputmode="numeric" placeholder="0">
+                    <span>FCFA</span>
+                  </div>
+                  <span class="field__error" id="errPrix"></span>
+                </div>
+                <div class="field">
+                  <label for="stock">Stock disponible <span class="req">*</span></label>
+                  <input type="number" id="stock" min="0" step="1" inputmode="numeric" placeholder="0">
+                  <span class="field__error" id="errStock"></span>
+                </div>
+              </div>
+            </div>
+
+            <p class="devis-note" id="devisNote" hidden>
+              Ce produit s'affichera avec « Prix sur devis » et un bouton « Demander un devis ». Aucun prix ni stock n'est nécessaire.
+            </p>
+          </section>
+
+          <!-- IMAGES -->
+          <section class="card">
+            <h2>Photos</h2>
+            <label class="dropzone" id="dropzone">
+              <input type="file" id="fichiers" accept="image/*" multiple>
+              <strong>Ajouter des photos</strong>
+              <small>Cliquez ou glissez vos images ici · 4 photos maximum</small>
+            </label>
+            <div class="img-grid" id="imgGrid"></div>
+            <span class="field__hint">La première photo est l'image principale du produit.</span>
+          </section>
+
+          <!-- VARIANTES -->
+          <section class="card">
+            <h2>Variantes</h2>
+            <div class="field">
+              <label for="inCouleurs">Couleurs proposées</label>
+              <div class="tags" id="tagsCouleurs"><input type="text" id="inCouleurs" placeholder="Tapez une couleur puis Entrée"></div>
+            </div>
+            <div class="field">
+              <label for="inFormats">Formats ou tailles proposés</label>
+              <div class="tags" id="tagsFormats"><input type="text" id="inFormats" placeholder="Ex : 30 × 40 cm, puis Entrée"></div>
+            </div>
+          </section>
+
+          <!-- PERSONNALISATION -->
+          <section class="card">
+            <h2>Personnalisation</h2>
+            <label class="switch">
+              <input type="checkbox" id="persoActif">
+              <span class="switch__track"></span>
+              <span class="switch__text">Ce produit est personnalisable</span>
+            </label>
+
+            <div class="perso-fields" id="persoFields" hidden>
+              <div class="field">
+                <label for="persoLibelle">Champ texte proposé au client</label>
+                <input type="text" id="persoLibelle" maxlength="60" placeholder="Ex : Texte à imprimer">
+                <span class="field__hint">Laissez vide si le client n'a pas de texte à saisir.</span>
+              </div>
+
+              <div class="field">
+                <label for="persoSupplement">Supplément de prix pour la personnalisation</label>
+                <div class="input-suffix">
+                  <input type="number" id="persoSupplement" min="0" step="1" inputmode="numeric" placeholder="0">
+                  <span>FCFA</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="persoInstructions">Instructions à fournir par le client</label>
+                <textarea id="persoInstructions" rows="3" placeholder="Ex : Envoyez votre logo en haute qualité, indiquez la couleur souhaitée…"></textarea>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- PUBLICATION -->
+        <aside class="form-side">
+          <div class="card card--sticky">
+            <h2>Publication</h2>
+
+            <div class="field">
+              <label for="statut">Statut</label>
+              <select id="statut">
+                <option value="publie">Publié (visible sur le site)</option>
+                <option value="brouillon">Brouillon (masqué)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn--gradient btn--block">Enregistrer le produit</button>
+            <a href="produits.html" class="btn btn--ghost btn--block">Annuler</a>
+            <button type="button" class="btn btn--danger btn--block" id="supprimer" hidden>Supprimer ce produit</button>
+          </div>
+        </aside>
+
+      </form>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/produit-form.js"></script>
+</body>
+</html>
