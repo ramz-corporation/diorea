@@ -25,7 +25,7 @@ document.getElementById('kpis').innerHTML = [
 
 /* ---------- Alerte de stock ---------- */
 const aSurveiller = produits.filter(p => p.mode === 'direct' && p.stock != null && p.stock <= SEUIL_STOCK);
-if (aSurveiller.length) {
+if (aSurveiller.length && lireParams().gestion.alerteStock) {
   document.getElementById('alertes').innerHTML = `
     <div class="alert" role="status">
       ${ico('info')}

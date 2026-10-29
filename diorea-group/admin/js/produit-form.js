@@ -135,7 +135,8 @@ if (courant) {
   $('persoInstructions').value = perso.instructions || '';
   $('supprimer').hidden = false;
 } else {
-  definirTitre('Ajouter un produit');
+    definirTitre('Ajouter un produit');
+    $('statut').value = lireParams().gestion.statutDefaut;
 }
 
 const tagsCouleurs = creerTags($('tagsCouleurs'), etat.couleurs);

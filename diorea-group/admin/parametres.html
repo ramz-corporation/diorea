@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Paramètres — Administration DIOREA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body data-page="parametres">
+
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="admin__main">
+    <header class="topbar" id="topbar" data-title="Paramètres"></header>
+
+    <main class="content">
+      <p class="demo-note" id="demoNote"></p>
+
+      <form class="stack" id="paramForm" novalidate>
+
+        <!-- BOUTIQUE -->
+        <section class="card">
+          <h2>Informations de la boutique</h2>
+          <p class="card__intro">Aucune information n'est préremplie : renseignez uniquement ce que vous souhaitez afficher.</p>
+
+          <div class="field">
+            <label for="pNom">Nom de la boutique <span class="req">*</span></label>
+            <input type="text" id="pNom" maxlength="60">
+            <span class="field__error" id="errNom"></span>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="pMail">E-mail de contact</label>
+              <input type="email" id="pMail" autocomplete="off" placeholder="adresse@exemple.com">
+              <span class="field__error" id="errMail"></span>
+            </div>
+            <div class="field">
+              <label for="pTel">Téléphone</label>
+              <input type="tel" id="pTel" inputmode="tel" autocomplete="off">
+              <span class="field__error" id="errTel"></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="pWa">Numéro WhatsApp</label>
+              <input type="tel" id="pWa" inputmode="tel" autocomplete="off">
+              <span class="field__hint">Format international, ex : +221…</span>
+              <span class="field__error" id="errWa"></span>
+            </div>
+            <div class="field">
+              <label for="pInsta">Compte Instagram</label>
+              <input type="text" id="pInsta" maxlength="80" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="pAdresse">Adresse (facultatif)</label>
+            <input type="text" id="pAdresse" maxlength="140" autocomplete="off">
+          </div>
+        </section>
+
+        <!-- GESTION -->
+        <section class="card">
+          <h2>Préférences de gestion</h2>
+
+          <div class="field">
+            <label for="pSeuil">Seuil de stock bas</label>
+            <div class="input-suffix">
+              <input type="number" id="pSeuil" min="0" max="999" step="1" inputmode="numeric">
+              <span>unités</span>
+            </div>
+            <span class="field__hint">Un produit est signalé « Stock bas » quand sa quantité est inférieure ou égale à ce nombre.</span>
+            <span class="field__error" id="errSeuil"></span>
+          </div>
+
+          <div class="setting">
+            <label class="switch">
+              <input type="checkbox" id="pAlerte">
+              <span class="switch__track"></span>
+              <span class="switch__text">Afficher l'alerte de stock sur la vue d'ensemble</span>
+            </label>
+          </div>
+
+          <div class="field" style="margin-top:20px">
+            <label for="pStatut">Statut par défaut d'un nouveau produit</label>
+            <select id="pStatut">
+              <option value="publie">Publié (visible sur le site)</option>
+              <option value="brouillon">Brouillon (masqué)</option>
+            </select>
+          </div>
+        </section>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--gradient">Enregistrer les paramètres</button>
+        </div>
+      </form>
+
+      <!-- DONNÉES DE DÉMONSTRATION -->
+      <section class="card stack" style="margin-top:22px">
+        <div>
+          <h2>Données de démonstration</h2>
+          <p class="card__intro" style="margin-bottom:16px">
+            Efface les produits ajoutés ou modifiés, ainsi que les statuts de commandes et de devis enregistrés dans ce navigateur.
+            Les produits de départ reviennent. Vos paramètres ci-dessus sont conservés.
+          </p>
+          <button type="button" class="btn btn--danger btn--sm" id="reset">Réinitialiser les données de démonstration</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/parametres.js"></script>
+</body>
+</html>

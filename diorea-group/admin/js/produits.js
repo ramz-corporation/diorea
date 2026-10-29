@@ -10,6 +10,9 @@ const fCat = document.getElementById('fCat');
 fCat.innerHTML = '<option value="all">Toutes les catégories</option>' +
   Object.keys(CATEGORIES).map(k => `<option value="${esc(k)}">${esc(CATEGORIES[k])}</option>`).join('');
 
+  /* Catégorie pré-sélectionnée via l'URL : produits.html?cat=accessoires */
+const catUrl = new URLSearchParams(location.search).get('cat');
+if (catUrl && CATEGORIES[catUrl]) { filtres.cat = catUrl; fCat.value = catUrl; }
 function ligne(p) {
   const img = (p.images && p.images[0]) ? `<img src="${esc(p.images[0])}" alt="">` : ico('image');
   const prix = p.mode === 'direct' ? esc(formatPrix(p.prix)) : '<span class="muted">Sur devis</span>';

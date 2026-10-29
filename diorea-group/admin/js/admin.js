@@ -8,7 +8,30 @@
    server/uploads.
    ===================================================== */
 
-const SEUIL_STOCK = 5;                          // stock bas à partir de cette quantité
+/* ---------- Paramètres de la boutique (gardés dans le navigateur pour la démo) ---------- */
+const CLE_PARAMS = 'diorea_admin_params_v1';
+const PARAMS_DEFAUT = {
+  boutique: { nom: 'DIOREA GROUP', email: '', telephone: '', whatsapp: '', instagram: '', adresse: '' },
+  gestion: { seuilStock: 5, alerteStock: true, statutDefaut: 'publie' }
+};
+
+function lireParams() {
+  let brut = {};
+  try { brut = JSON.parse(localStorage.getItem(CLE_PARAMS)) || {}; } catch { /* valeurs par défaut */ }
+  const boutique = { ...PARAMS_DEFAUT.boutique, ...(brut.boutique || {}) };
+  const gestion = { ...PARAMS_DEFAUT.gestion, ...(brut.gestion || {}) };
+  const seuil = Number(gestion.seuilStock);
+  gestion.seuilStock = Number.isInteger(seuil) && seuil >= 0 ? seuil : PARAMS_DEFAUT.gestion.seuilStock;
+  gestion.alerteStock = gestion.alerteStock !== false;
+  if (!['publie', 'brouillon'].includes(gestion.statutDefaut)) gestion.statutDefaut = 'publie';
+  return { boutique, gestion };
+}
+
+function sauverParams(params) {
+  try { localStorage.setItem(CLE_PARAMS, JSON.stringify(params)); return true; } catch { return false; }
+}
+
+let SEUIL_STOCK = lireParams().gestion.seuilStock;   // stock bas à partir de cette quantité
 const CLE_STORE = 'diorea_admin_produits_v1';
 const STOCK_DEMO = { 2: 8, 4: 3, 5: 14, 7: 0, 8: 6 };   // stocks fictifs de démonstration
 
